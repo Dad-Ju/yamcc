@@ -3,18 +3,15 @@
 	"version": "1.0.0",
 	"license": "MIT",
 	"dependencies": {
-		"koa": "^2.13.0",
-		"koa-bodyparser": "^4.3.0",
-		"koa-json": "^2.0.2",
-		"koa-logger": "^3.2.1",
-		"koa-router": "^9.4.0"
+		"@nestjs/common": "^7.4.4",
+		"@nestjs/core": "^7.4.4",
+		"pg": "^8.4.1",
+		"reflect-metadata": "^0.1.13",
+		"rxjs": "^6.6.3",
+		"socket.io": "^2.3.0",
+		"typeorm": "^0.2.28"
 	},
 	"devDependencies": {
-		"@types/koa": "^2.11.5",
-		"@types/koa-bodyparser": "^4.3.0",
-		"@types/koa-json": "^2.0.18",
-		"@types/koa-logger": "^3.1.1",
-		"@types/koa-router": "^7.4.1",
 		"@types/node": "^14.11.10",
 		"@typescript-eslint/eslint-plugin": "^4.4.1",
 		"@typescript-eslint/parser": "^4.4.1",

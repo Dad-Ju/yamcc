@@ -1,0 +1,16 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"target": "ES2020",
+		"module": "ESNext",
+		"noEmit": true,
+		"baseUrl": ".",
+        "outDir": "out",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+		"sourceMap": true,
+		"paths": {
+			"~/*": ["src/*"]
+		}
+	}
+}

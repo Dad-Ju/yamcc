@@ -2,6 +2,7 @@
 	"name": "worker",
 	"version": "1.0.0",
 	"license": "MIT",
+	"dependencies": {},
 	"devDependencies": {
 		"@types/node": "^14.11.10",
 		"@typescript-eslint/eslint-plugin": "^4.4.1",
