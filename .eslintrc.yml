@@ -1,0 +1,78 @@
+root: true
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 2020
+  sourceType: module
+  project: './tsconfig.json'
+ignorePatterns:
+  - '*.min.js'
+  - '*generated*'
+  - 'dist/*/**'
+extends:
+  - standard
+  - eslint:recommended
+  - plugin:functional/recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:prettier/recommended
+plugins:
+  - graphql
+  - no-null
+  - prefer-arrow-functions
+  - functional
+rules:
+  comma-dangle: 0
+  camelcase: 0
+  quotes:
+    - error
+    - single
+    - avoid-escape
+  object-shorthand: error
+  prefer-template: 2
+  prefer-const: error
+  indent: off
+  curly:
+    - error
+    - multi
+    - consistent
+  max-depth:
+    - error
+    - max: 1
+  no-restricted-imports:
+    - error
+    - patterns:
+        - '*..*'
+        - '*generated*'
+  no-useless-concat: error
+  no-bitwise: error
+  no-return-await: error
+  no-undef: error
+  no-console: 1
+  functional/no-conditional-statement: off
+  functional/functional-parameters: off
+  functional/no-expression-statement: off
+  functional/no-return-void: off
+  functional/no-mixed-type: off
+  padding-line-between-statements:
+    - error
+    - blankLine: always
+      prev: '*'
+      next: return
+  no-null/no-null: off
+  import/order:
+    - error
+    - pathGroups:
+        - pattern: ~/**
+          group: external
+      newlines-between: never
+  import/no-unresolved:
+    - error
+    - ignore:
+        - '~'
+        - './'
+  import/default: 0
+  prefer-arrow-functions/prefer-arrow-functions:
+    - error
+    - returnStyle: implicit
+      disallowPrototype: true
+      classPropertiesAllowed: true
+  prettier/prettier: warn
