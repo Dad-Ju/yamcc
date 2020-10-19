@@ -5,13 +5,10 @@
 	"repository": "https://github.com/Dad-Ju/yamcc.git",
 	"author": "Justin Bedrich <justin.bedrich@gmail.com>",
 	"license": "MIT",
-	"workspaces": {
-		"packages": [
-			"client",
-			"controller",
-			"worker"
-		]
-	},
+	"private": "true",
+	"workspaces": [
+		"packages/*"
+	],
 	"scripts": {},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^4.4.1",
