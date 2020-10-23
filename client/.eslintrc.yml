@@ -9,3 +9,5 @@ overrides:
       - ./src/**/*.vue
     rules:
       functional/no-class: off
+    parserOptions:
+      project: ./tsconfig.json
