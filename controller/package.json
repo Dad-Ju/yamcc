@@ -1,0 +1,14 @@
+{
+	"name": "controller",
+	"version": "1.0.0",
+	"license": "MIT",
+	"scripts": {
+		"start": "ts-node --transpile-only -r tsconfig-paths/register ./main.ts",
+		"dev": "nodemon -e ts -x yarn start"
+	},
+	"dependencies": {
+		"socket.io": "^2.3.0",
+		"typeorm": "^0.2.28"
+	},
+	"devDependencies": {}
+}
