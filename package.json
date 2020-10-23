@@ -12,9 +12,16 @@
 		"worker"
 	],
 	"scripts": {
+		"client": "yarn workspace client",
+		"controller": "yarn workspace controller",
+		"worker": "yarn workspace worker",
 		"build": "echo 'not done yet!'",
+		"start": "yarn run start:client && yarn run start:controller",
 		"start:controller": "yarn workspace controller run start",
+		"start:client": "yarn workspace client run build",
+		"dev": "concurrently 'yarn run dev:controller' 'yarn run dev:client' --kill-others",
 		"dev:controller": "yarn workspace controller run dev",
+		"dev:client": "yarn workspace client run serve",
 		"lint": "eslint --fix"
 	},
 	"devDependencies": {

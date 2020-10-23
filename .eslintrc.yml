@@ -9,13 +9,12 @@ ignorePatterns:
   - '*generated*'
   - 'dist/*/**'
 extends:
-  - standard
+  # - standard
   - eslint:recommended
   - plugin:functional/recommended
   - plugin:@typescript-eslint/recommended
   - plugin:prettier/recommended
 plugins:
-  - graphql
   - no-null
   - prefer-arrow-functions
   - functional
@@ -29,7 +28,7 @@ rules:
   object-shorthand: error
   prefer-template: 2
   prefer-const: error
-  indent: off
+  indent: 0
   curly:
     - error
     - multi
@@ -58,18 +57,6 @@ rules:
       prev: '*'
       next: return
   no-null/no-null: off
-  import/order:
-    - error
-    - pathGroups:
-        - pattern: ~/**
-          group: external
-      newlines-between: never
-  import/no-unresolved:
-    - error
-    - ignore:
-        - '~'
-        - './'
-  import/default: 0
   prefer-arrow-functions/prefer-arrow-functions:
     - error
     - returnStyle: implicit

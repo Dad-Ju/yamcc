@@ -1,0 +1,11 @@
+extends:
+  - './../.eslintrc.yml'
+  - 'plugin:vue/vue3-essential'
+  - '@vue/typescript/recommended'
+  - '@vue/prettier'
+  - '@vue/prettier/@typescript-eslint'
+overrides:
+  - files:
+      - ./src/**/*.vue
+    rules:
+      functional/no-class: off

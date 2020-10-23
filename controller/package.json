@@ -7,8 +7,11 @@
 		"dev": "nodemon -e ts -x yarn start"
 	},
 	"dependencies": {
+		"express": "^4.17.1",
 		"socket.io": "^2.3.0",
 		"typeorm": "^0.2.28"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		"@types/node": "^14.14.2"
+	}
 }
