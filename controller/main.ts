@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
-import { ExpressApp } from '~/loader'
+import { InitExpressApp } from '~/loader'
 ;(async () => {
-	console.log(ExpressApp.settings)
+	InitExpressApp()
 	console.log('Fancy Shit will happen soon :D')
 })()

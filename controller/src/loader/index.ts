@@ -1,1 +1,1 @@
-export { default as ExpressApp } from './express'
+export { default as InitExpressApp } from './express'

@@ -1,12 +1,12 @@
 import express from 'express'
 
-const app = express()
+const initExpress = (): void => {
+	const app = express()
 
-app.settings.env !== 'development'
-	? app.use(express.static('../client/dist'))
-	: app.get('/', (_, res) => res.redirect('http://localhost:8080/'))
+	app.use(express.static('dist_client'))
 
-app.listen(3000)
+	app.listen(3000)
+}
 
-export default app
+export default initExpress
 //TODO: Serve dist folder from Client.

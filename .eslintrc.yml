@@ -8,6 +8,7 @@ ignorePatterns:
   - '*.min.js'
   - '*generated*'
   - 'dist/*/**'
+  - 'dist_client/*/**'
 extends:
   # - standard
   - eslint:recommended

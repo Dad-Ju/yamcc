@@ -12,5 +12,8 @@
 		"socket.io": "^2.3.0",
 		"typeorm": "^0.2.28"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		"reflect-metadata": "^0.1.13",
+		"sqlite3": "^5.0.0"
+	}
 }

@@ -3,8 +3,9 @@
 	"version": "1.0.0",
 	"license": "MIT",
 	"scripts": {
-		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build",
+		"start": "vue-cli-service serve",
+		"dev": "vue-cli-service build --dest ../controller/dist_client --watch",
+		"build": "vue-cli-service build --dest ../controller/dist_client",
 		"lint": "vue-cli-service lint"
 	},
 	"dependencies": {
