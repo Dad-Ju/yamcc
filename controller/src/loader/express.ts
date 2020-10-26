@@ -9,4 +9,3 @@ const initExpress = (): void => {
 }
 
 export default initExpress
-//TODO: Serve dist folder from Client.

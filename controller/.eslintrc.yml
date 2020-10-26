@@ -1,0 +1,7 @@
+extends:
+  - './../.eslintrc.yml'
+overrides:
+  - files:
+      - ./src/model/*.ts
+    rules:
+      functional/no-class: off
