@@ -7,12 +7,10 @@
 	"license": "MIT",
 	"private": "true",
 	"workspaces": [
-		"client",
 		"controller",
 		"worker"
 	],
 	"scripts": {
-		"client": "yarn workspace client",
 		"controller": "yarn workspace controller",
 		"worker": "yarn workspace worker",
 		"build": "echo 'not done yet!'",
