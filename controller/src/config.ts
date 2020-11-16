@@ -1,4 +1,6 @@
 import { readFileSync } from 'fs'
+import { normalize } from 'path'
+import { DatabaseType } from 'typeorm'
 
 type ConfigInput = {
 	readonly db: {
@@ -13,17 +15,9 @@ type ConfigInput = {
 	readonly secret: string
 }
 
-type DatabaseTypes =
-	| 'sqlite'
-	| 'mysql'
-	| 'mariadb'
-	| 'postgres'
-	| 'oracle'
-	| 'mongodb'
-
 type Config = {
 	readonly database: {
-		readonly type: DatabaseTypes
+		readonly type: DatabaseType
 		readonly database: string
 		readonly host: string
 		readonly password: string
@@ -32,15 +26,18 @@ type Config = {
 }
 
 const isDev = process.env.NODE_ENV !== 'prod'
-const { db }: ConfigInput = JSON.parse(
-	readFileSync('../config.json', { encoding: 'utf-8' }),
-)
+const configstring =
+	readFileSync(normalize(`${__dirname}/../config.json`), {
+		encoding: 'utf-8',
+	}) || '{}'
+
+const { db }: ConfigInput = JSON.parse(configstring)
 
 const config: Config = {
 	database: {
-		type: (isDev ? 'sqlite' : db.type) as DatabaseTypes,
-		database: `yamcc${isDev ? '_dev' : ''}`,
-		host: './db.sqlite',
+		type: (isDev ? 'sqlite' : db.type) as DatabaseType,
+		database: `yamcc${isDev ? '_dev.sqlite' : ''}`,
+		host: isDev ? '' : db.host,
 		password: isDev ? '' : db.username,
 		username: isDev ? '' : db.password,
 	},
