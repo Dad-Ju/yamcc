@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs'
+import { existsSync, readFileSync } from 'fs'
 import { normalize } from 'path'
 import { DatabaseType } from 'typeorm'
 
@@ -10,9 +10,7 @@ type ConfigInput = {
 		readonly username: string
 		readonly password: string
 	}
-	readonly adminPort: string
-	readonly socketPort: string
-	readonly secret: string
+	readonly port: number
 }
 
 type Config = {
@@ -23,15 +21,29 @@ type Config = {
 		readonly password: string
 		readonly username: string
 	}
+	readonly port: number
+	readonly isDev: boolean
+}
+
+const defaultConfig: ConfigInput = {
+	db: {
+		type: 'sqlite',
+		host: '',
+		database: 'yamcc.sqlite',
+		username: '',
+		password: '',
+	},
+	port: 3030,
 }
 
 const isDev = process.env.NODE_ENV !== 'prod'
-const configstring =
-	readFileSync(normalize(`${__dirname}/../config.json`), {
-		encoding: 'utf-8',
-	}) || '{}'
+const configstring = existsSync(`${__dirname}/../config.json`)
+	? readFileSync(normalize(`${__dirname}/../config.json`), {
+			encoding: 'utf-8',
+	  })
+	: JSON.stringify(defaultConfig)
 
-const { db }: ConfigInput = JSON.parse(configstring)
+const { db, port }: ConfigInput = JSON.parse(configstring)
 
 const config: Config = {
 	database: {
@@ -41,6 +53,8 @@ const config: Config = {
 		password: isDev ? '' : db.username,
 		username: isDev ? '' : db.password,
 	},
+	port,
+	isDev,
 }
 
 export default config

@@ -1,29 +1,22 @@
 import 'reflect-metadata'
-import { createConnection, getConnection } from 'typeorm'
+import { ConnectionOptions, createConnection } from 'typeorm'
 import config from '~/config'
+import { ServerGroup } from '~/model/serverModel'
 import { User } from '~/model/userModel'
 
 export const initTypeORM = async (): Promise<void> => {
 	const { type, database, host, password, username } = config.database
-
-	const connection = await createConnection({
+	const connectionConfig = {
 		name: 'default',
-		type: 'sqlite',
+		type,
 		database,
-		// host,
-		// password,
-		// username,
+		host,
+		password,
+		username,
 		synchronize: true,
-		logging: true,
-		entities: [User],
-	})
+		logging: config.isDev,
+		entities: [User, ServerGroup],
+	} as ConnectionOptions
 
-	console.log(connection.name)
-	console.log(getConnection().name)
-
-	return
+	await createConnection(connectionConfig)
 }
-
-// const connection = getConnection()
-
-// export default connection
