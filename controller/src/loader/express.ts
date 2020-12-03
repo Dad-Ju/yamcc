@@ -1,12 +1,12 @@
 import express from 'express'
 import { createServer } from 'http'
-import { IO } from '~/loader'
+import { io } from '~/loader'
 
 const initExpress = (): void => {
 	const app = express()
 	const server = createServer(app)
-	app.use(express.static('dist_client'))
-	IO.attach(server)
+	app.use(express.static('client'))
+	io.attach(server)
 
 	server.listen(3000)
 }

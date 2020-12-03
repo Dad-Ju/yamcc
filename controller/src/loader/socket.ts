@@ -1,10 +1,10 @@
 import { Server } from 'socket.io'
 
-const io = new Server({
+const socketServer = new Server({
 	cors: {
 		origin: '*:*',
 		methods: ['GET', 'POST'],
 	},
 })
 
-export default io
+export default socketServer
