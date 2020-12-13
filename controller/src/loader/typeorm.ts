@@ -15,7 +15,7 @@ export const initTypeORM = async (): Promise<void> => {
 		password,
 		username,
 		synchronize: true,
-		logging: config.isDev,
+		logging: !config.isDev,
 		entities: [User, ServerGroup, Worker],
 	} as ConnectionOptions
 

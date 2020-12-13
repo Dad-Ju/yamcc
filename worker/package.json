@@ -2,6 +2,13 @@
 	"name": "worker",
 	"version": "1.0.0",
 	"license": "MIT",
-	"dependencies": {},
+	"scripts": {
+		"start": "ts-node --transpile-only -r tsconfig-paths/register ./worker.ts",
+		"dev": "nodemon -e ts -x yarn start"
+	},
+	"dependencies": {
+		"nodemon": "^2.0.6",
+		"socket.io-client": "^3.0.4"
+	},
 	"devDependencies": {}
 }

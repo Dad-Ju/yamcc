@@ -48,7 +48,7 @@ rules:
   no-bitwise: error
   no-return-await: error
   no-undef: error
-  no-console: 1
+  no-console: 0
   functional/no-conditional-statement: off
   functional/functional-parameters: off
   functional/no-expression-statement: off

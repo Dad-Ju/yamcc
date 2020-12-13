@@ -1,5 +1,4 @@
 import { io } from '~/loader/'
-
 // Start a server
 
 // Send Files with the Start Server Event
@@ -7,3 +6,7 @@ import { io } from '~/loader/'
 // TODO: Request Static Server Files
 
 // Request ServerLog
+
+setInterval(() => {
+	io.to('live-feed').send('publsiher')
+}, 2000)

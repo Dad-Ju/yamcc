@@ -7,23 +7,44 @@ import { Worker } from '~/model/workerModel'
 // 	client,
 // }
 
-type LoginPayload = {
-	readonly authkey: string
+type WorkerLoginPayload = {
+	readonly authkey?: string
 	readonly name: string
 }
 
-io.on('workerlogin', async (socket: Socket, data: LoginPayload) => {
-	const { authkey, name } = data
+// Without this VSCODE gets lost in formating....
+const Server = io
 
-	const worker = await Worker.findOne({ where: { authkey, name } })
+Server.on('connection', (socket: Socket) => {
+	console.log(`connect ${socket.id}`)
 
-	if (!worker)
-		return socket.send('Invalid Worker Authkey and/or Name!').disconnect()
+	socket.once('workerlogin', async (data: WorkerLoginPayload) => {
+		const { authkey, name } = data
+		console.log(
+			`workerlogin from ${socket.id} ${JSON.stringify(
+				socket.request.connection.address,
+			)}`,
+		)
+		const worker = await Worker.findOne({ where: { authkey, name } })
 
-	socket.join('live-feed')
+		if (!worker)
+			return socket.send('Invalid Worker Authkey and/or Name!').disconnect()
+
+		socket.join('live-feed')
+	})
+
+	socket.on('login', async (data: any) => {
+		console.log(data)
+	})
+
+	socket.onAny((eventName, ...args) => {
+		console.log(eventName, args)
+	})
+
+	socket.on('disconnect', () => {
+		console.log(`disconnect ${socket.id}`)
+	})
 })
-
-io.on('clientlogin', async (socket: Socket, data: LoginPayload) => {})
 
 // Handle Register
 
